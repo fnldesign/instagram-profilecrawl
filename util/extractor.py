@@ -1,4 +1,5 @@
 """Methods to extract the data for the given usernames profile"""
+from os import getenv
 import sys
 from time import sleep, time
 from re import findall
@@ -434,6 +435,9 @@ def extract_information(browser, username, limit_amount):
 
     InstaLogger.logger().info('Extracting information from ' + username)
     isprivate = False
+
+    IG_USERNAME = getenv("IG_USERNAME", "")
+    InstaLogger.logger().info('Using IG_USERNAME[' + IG_USERNAME + ']')
 
     try:
         user_link = "https://www.instagram.com/{}/".format(username)
